@@ -62,17 +62,25 @@ public class GameController : MonoBehaviour
         okSelectResultImage.gameObject.SetActive(false);
 
         processObjectiveText.gameObject.SetActive(false);
-        await PlayTextAnimation($"下準備中...", processingText, playZoom: false, playMove: true);
+
+        await PlayTextAnimation($"Prepareing", processingText, playZoom: false, playMove: true);
         processingText.gameObject.SetActive(false);
 
-        await PlayTextAnimation($"落として盛り付けろ！", processObjectiveText);
+        await PlayTextAnimation($"Making", processObjectiveText);
+        processObjectiveText.gameObject.SetActive(false);
 
+        resultText.gameObject.SetActive(true);
+        gotoTitleButton.gameObject.SetActive(true);
+        restartGameButton.gameObject.SetActive(true);
     }
 
     private void PlaySE(Audio type)
     {
         var sound = clipList.First(x => x.type == type);
-        audioSource.PlayOneShot(sound.clip);
+        if (sound != null)
+        {
+            audioSource.PlayOneShot(sound.clip);
+        }
     }
 
     private async UniTask PlayTextAnimation(string prcessText, TMP_Text target, bool playZoom = true, bool playMove = true)
