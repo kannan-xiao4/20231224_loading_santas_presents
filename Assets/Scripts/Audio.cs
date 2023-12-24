@@ -11,12 +11,5 @@ public class SystemSound
 
 public enum Audio
 {
-    Failure,
-    Success,
-    OnDish,
-    Stew,
-    Grill,
-    Cut,
-    Fry,
-    Result
+    None,
 }
